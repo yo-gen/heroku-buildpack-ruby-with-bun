@@ -16,7 +16,6 @@ echo "-----> Installing bun"
 curl -fsSL https://bun.sh/install | bash
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
-source "$HOME/.bash_profile"
 
 if detect_needs_java "$BUILD_DIR"; then
   cat <<EOM
