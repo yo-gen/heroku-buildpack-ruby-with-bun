@@ -14,11 +14,9 @@ heroku_buildpack_ruby_install_ruby "$BIN_DIR" "$BUILDPACK_DIR"
 # Add installation of bun
 echo "-----> Installing bun"
 curl -fsSL https://bun.sh/install | bash
-
-# Add bun setup commands
-echo "-----> Setting up bun environment variables"
-echo 'export BUN_INSTALL="$HOME/.bun"' >> $ENV_DIR/99-bun
-echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $ENV_DIR/99-bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+source "$HOME/.bash_profile"
 
 if detect_needs_java "$BUILD_DIR"; then
   cat <<EOM
