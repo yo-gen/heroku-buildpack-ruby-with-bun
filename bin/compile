@@ -11,6 +11,10 @@ BUILDPACK_DIR=$(dirname $BIN_DIR)
 source "$BIN_DIR/support/bash_functions.sh"
 heroku_buildpack_ruby_install_ruby "$BIN_DIR" "$BUILDPACK_DIR"
 
+# Add installation of bun
+echo "-----> Installing bun"
+curl -fsSL https://bun.sh/install | bash
+
 if detect_needs_java "$BUILD_DIR"; then
   cat <<EOM
 
